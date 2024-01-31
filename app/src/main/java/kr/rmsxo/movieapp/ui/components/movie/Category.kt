@@ -4,11 +4,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kr.rmsxo.movieapp.ui.theme.MovieAppTheme
+import kr.rmsxo.movieapp.ui.theme.Paddings
+import kr.rmsxo.movieapp.ui.theme.h5Title
 
 @Composable
 fun CategoryRow() {
@@ -18,7 +22,7 @@ fun CategoryRow() {
         // 리사이클러 뷰 같은거
         LazyRow(
             contentPadding = PaddingValues(
-                horizontal = 10.dp
+                horizontal = Paddings.large
             )
         ) {
             item {
@@ -41,14 +45,21 @@ fun CategoryRow() {
 fun CategoryTitle(titleName: String) {
     Text(
         text = "Action",
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier
+            .padding(
+                vertical = Paddings.large,
+                horizontal = Paddings.extra
+            ),
+        style = MaterialTheme.typography.headlineSmall
     )
 }
 
 @Preview
 @Composable
 fun CategoryRowPreview() {
-    CategoryRow()
+    MovieAppTheme {
+        CategoryRow()
+    }
 }
 
 
