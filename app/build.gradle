@@ -39,6 +39,8 @@ android {
     }
     buildFeatures {
         compose true
+        // Gradle 8.0 이상부터는 buildConfig를 사용 할 수 없어서 별도로 추가 해야 함
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion '1.5.0'
