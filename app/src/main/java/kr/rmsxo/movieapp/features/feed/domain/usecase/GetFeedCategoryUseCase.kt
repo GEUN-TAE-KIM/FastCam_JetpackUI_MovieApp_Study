@@ -8,10 +8,8 @@ import javax.inject.Inject
 
 class GetFeedCategoryUseCase @Inject constructor(
     private val dataSource: IMovieDataSource
-): IGetFeedCategoryUseCase {
-
+) : IGetFeedCategoryUseCase {
     override suspend fun invoke(sortOrder: SortOrder?): EntityWrapper<List<CategoryEntity>> {
         return dataSource.getCategories(sortOrder)
     }
-
 }

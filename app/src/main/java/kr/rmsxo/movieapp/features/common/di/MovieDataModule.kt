@@ -21,4 +21,5 @@ abstract class MovieDataModule {
     @Singleton
     @Binds
     abstract fun bindNetwork(networkApi: MovieAppNetworkApi): IMovieAppNetworkApi
+
 }

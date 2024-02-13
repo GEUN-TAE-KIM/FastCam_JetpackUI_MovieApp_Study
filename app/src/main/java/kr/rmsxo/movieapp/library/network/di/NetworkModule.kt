@@ -74,3 +74,5 @@ class NetworkModule {
         networkRequestFactory
 
 }
+
+const val baseUrl = "https://kgeun.github.io/assets/fastcampus_android_compose/movie/"

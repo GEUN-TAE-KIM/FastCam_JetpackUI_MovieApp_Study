@@ -4,20 +4,26 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kr.rmsxo.movieapp.features.common.entity.CategoryEntity
+import kr.rmsxo.movieapp.features.feed.presentation.input.IFeedViewModelInput
 import kr.rmsxo.movieapp.ui.theme.MovieAppTheme
 import kr.rmsxo.movieapp.ui.theme.Paddings
 import kr.rmsxo.movieapp.ui.theme.h5Title
 
 @Composable
-fun CategoryRow() {
+fun CategoryRow(
+    categoryEntity: CategoryEntity,
+    input: IFeedViewModelInput
+) {
     Column() {
-        CategoryTitle( "Action")
+        CategoryTitle(categoryEntity.genre)
 
         // 리사이클러 뷰 같은거
         LazyRow(
@@ -25,26 +31,20 @@ fun CategoryRow() {
                 horizontal = Paddings.large
             )
         ) {
-            item {
-                MovieItem()
-            }
-            item {
-                MovieItem()
-            }
-            item {
-                MovieItem()
-            }
-            item {
-                MovieItem()
+            itemsIndexed(categoryEntity.movieFeedEntities) { _, item ->
+                MovieItem(
+                    movie = item,
+                    input = input
+                )
             }
         }
     }
 }
 
 @Composable
-fun CategoryTitle(titleName: String) {
+fun CategoryTitle(genre: String) {
     Text(
-        text = "Action",
+        text = genre,
         modifier = Modifier
             .padding(
                 vertical = Paddings.large,
@@ -53,29 +53,3 @@ fun CategoryTitle(titleName: String) {
         style = MaterialTheme.typography.headlineSmall
     )
 }
-
-@Preview
-@Composable
-fun CategoryRowPreview() {
-    MovieAppTheme {
-        CategoryRow()
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
